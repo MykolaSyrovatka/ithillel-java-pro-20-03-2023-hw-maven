@@ -12,6 +12,7 @@ import java.util.*;
 
 public class TestRunner {
     public static void start(Class c) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        Object object = c.newInstance();
         Method[] methods = c.getMethods();
         boolean isAfterSuite = false;
         boolean isBeforeSuite = false;
@@ -51,7 +52,12 @@ public class TestRunner {
         }
 
         Method methodBefore = c.getDeclaredMethod(methodBeforeSuite);
-        methodBefore.invoke(c.getClass().newInstance());
-
+        methodBefore.invoke(object);
+        for (String s:testMethods){
+            Method methodTest = c.getDeclaredMethod(s);
+            methodTest.invoke(object);
+        }
+        Method methodAfter = c.getDeclaredMethod(methodAfterSuite);
+        methodAfter.invoke(object);
     }
 }
