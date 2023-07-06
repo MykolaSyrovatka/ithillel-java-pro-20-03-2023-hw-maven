@@ -32,5 +32,9 @@ public class HomeWorkMain {
                .setWheel(new Wheel(18))
                .setTransmission(Transmission.AUTOMATIC)
                .build();
+
+
+
+
     }
 }
