@@ -48,7 +48,6 @@ public class TestRunner {
                 }
 
             }
-            //System.out.println(list[i].getAnnotations());
         }
 
         Method methodBefore = c.getDeclaredMethod(methodBeforeSuite);
